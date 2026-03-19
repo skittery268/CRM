@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ["manager", "admin"],
+        enum: ["manager", "general manager"],
         default: "manager"
     },
     isVerified: {

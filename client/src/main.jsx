@@ -3,12 +3,15 @@ import App from './App.jsx'
 import { BrowserRouter } from "react-router"
 import { ToastContainer } from "react-toastify"
 import { AuthProvider } from './context/AuthContext.jsx'
+import { ClientProvider } from './context/ClientContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <AuthProvider>
-      <App />
-      <ToastContainer />
+      <ClientProvider>
+        <App />
+        <ToastContainer />
+      </ClientProvider>
     </AuthProvider>
   </BrowserRouter>,
 )

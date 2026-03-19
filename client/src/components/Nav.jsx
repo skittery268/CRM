@@ -12,6 +12,7 @@ const Nav = () => {
                         user ? (
                             <>
                                 <li><Link to={"/profile"}>Profile</Link></li>
+                                <li><Link to={"/addclient"}>Add Client</Link></li>
                                 <li><button onClick={logout}>Logout</button></li>
                             </>
                         ) : (

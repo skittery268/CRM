@@ -26,6 +26,10 @@ const clientSchema = new mongoose.Schema({
     instagram: {
         type: String,
         default: ""
+    },
+    managerId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "users"
     }
 }, { timestamps: true });
 

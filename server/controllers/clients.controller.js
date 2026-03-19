@@ -35,11 +35,23 @@ const getClient = CatchAsync(async (req, res, next) => {
     })
 })
 
+// Controller to get clients of manager
+const getManagerClients = CatchAsync(async (req, res, next) => {
+    const clients = await Client.find({ managerId: req.userId });
+
+    res.status(200).json({
+        status: "success",
+        data: {
+            clients
+        }
+    })
+})
+
 // Controller to add new client
 const addClient = CatchAsync(async (req, res, next) => {
     const { fullname, description, facebook, status, telegram, instagram } = req.body;
 
-    const newClient = await Client.create({ fullname, description, facebook, status, telegram, instagram });
+    const newClient = await Client.create({ fullname, description, facebook, status, telegram, instagram, managerId: req.userId });
 
     res.status(200).json({
         message: "Client successfully added!",
@@ -56,8 +68,8 @@ const deleteClient = CatchAsync(async (req, res, next) => {
 
     await Client.findByIdAndDelete(id);
 
-    res.status(204).json({
-        message: "Client deleted successfylly!",
+    res.status(200).json({
+        message: "Client deleted successfully!",
         status: "success"
     })
 })
@@ -78,15 +90,13 @@ const editClientInfo = CatchAsync(async (req, res, next) => {
 
     await client.save();
 
-    const clients = await Client.find();
-
     res.status(200).json({
         message: "Client information edited successfully!",
         status: "success",
         data: {
-            clients
+            client
         }
     })
 })
 
-module.exports = { getAllClients, getClient, addClient, deleteClient, editClientInfo };
+module.exports = { getAllClients, getClient, addClient, deleteClient, editClientInfo, getManagerClients };

@@ -6,7 +6,7 @@ const CatchAsync = require("../utils/catchAsync");
 const jwt = require("jsonwebtoken");
 
 // Function to check user authorization
-const protect = CatchAsync((req, res, next) => {
+const protect = CatchAsync(async (req, res, next) => {
     const token = req.cookies.jwt;
 
     if (!token) {
