@@ -90,7 +90,7 @@ export const ClientProvider = ({ children }) => {
     }
 
     return (
-        <ClientContext.Provider value={{ clients, client, managerClients, addClient, deleteClient, changeClientInfo, getClient }}>
+        <ClientContext.Provider value={{ clients, client, managerClients, setClients, setManagerClients, addClient, deleteClient, changeClientInfo, getClient }}>
             {children}
         </ClientContext.Provider>
     )

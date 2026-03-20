@@ -10,6 +10,7 @@ const globalErrorHandler = require("./controllers/error.controller");
 // Routers
 const authRouter = require("./routers/auth.router");
 const clientsRouter = require("./routers/clients.router");
+const contractRouter = require("./routers/contract.router");
 
 // Configs
 const connectDB = require("./configs/mongo.config");
@@ -27,6 +28,7 @@ app.use(cors({
 // Controllers
 app.use("/api/auth", authRouter);
 app.use("/api/clients", clientsRouter);
+app.use("/api/contracts", contractRouter);
 
 // Global error handler
 app.use(globalErrorHandler);

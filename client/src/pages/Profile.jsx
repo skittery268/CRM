@@ -2,25 +2,26 @@ import { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { useClients } from "../hooks/useClients";
 import { Link } from "react-router";
+import EditClient from "../components/editClient";
+import Contracts from "../components/Contracts";
+import { useContracts } from "../hooks/useContracts";
 
 const Profile = () => {
     const { user } = useAuth();
-    const { managerClients, deleteClient, changeClientInfo } = useClients();
+    const { managerClients, deleteClient } = useClients();
     const [editedClientId, setEditedClientId] = useState(null);
+    const { addContract } = useContracts();
 
-    const handleSubmit = (e, cb) => {
+    const handleSubmit = (e, clientId) => {
         e.preventDefault();
 
         const data = {
-            fullname: e.target.fullname.value,
+            name: e.target.name.value,
             description: e.target.description.value,
-            facebook: e.target.facebook.value,
-            telegram: e.target.telegram.value,
-            instagram: e.target.instagram.value,
-            status: e.target.status.value
+            price: e.target.price.value
         }
 
-        cb(editedClientId, data);
+        addContract(clientId, data);
         e.target.reset();
     }
 
@@ -39,32 +40,24 @@ const Profile = () => {
                             <div key={index}>
                                 {
                                     client._id === editedClientId ? (
-                                        <form onSubmit={(e) => { handleSubmit(e, changeClientInfo); setEditedClientId(null) }}>
-                                            <input type="text" name="fullname" placeholder="Enter new fullname" />
-                                            <br />
-                                            <input type="text" name="description" placeholder="Enter new description" />
-                                            <br />
-                                            <input type="text" name="facebook" placeholder="Enter new Facebook URL" />
-                                            <br />
-                                            <input type="text" name="telegram" placeholder="Enter new Telegram URL" />
-                                            <br />
-                                            <input type="text" name="instagram" placeholder="Enter new Instagram URL" />
-                                            <br />
-                                            <label htmlFor="status">Select status</label>
-                                            <select name="status" id="status">
-                                                <option value="lead">Lead</option>
-                                                <option value="in-progress">In-progress</option>
-                                                <option value="closed">Closed</option>
-                                            </select>
-                                            <br />
-                                            <button type="submit">Save changes</button>
-                                            <button type="button" onClick={() => setEditedClientId(null)}>Cancel</button>
-                                        </form>
+                                        <EditClient editedClientId={editedClientId} setEditedClientId={setEditedClientId} />
                                     ) : (
                                         <>
                                             <p>{client.fullname}</p>
                                             <p>{client.description}</p>
                                             <p>{client.status}</p>
+                                            <form onSubmit={(e) => handleSubmit(e, client._id)}>
+                                                <input type="text" name="name" placeholder="Enter contract name" required />
+                                                <br />
+                                                <input type="text" name="description" placeholder="Enter contract description" required />
+                                                <br />
+                                                <input type="number" name="price" placeholder="Enter contract price" required />
+                                                <br />
+                                                <button type="submit">Add Contract</button>
+                                            </form>
+
+                                            <Contracts client={client} />
+
                                             <Link to={`/client/${client._id}`}>View Details</Link>
                                             <button onClick={() => deleteClient(client._id)}>Delete client</button>
                                             <button onClick={() => setEditedClientId(client._id)}>Edit Client Info</button>

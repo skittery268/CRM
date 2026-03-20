@@ -30,7 +30,16 @@ const clientSchema = new mongoose.Schema({
     managerId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "users"
-    }
+    },
+    contracts: [
+        {
+            id: { type: String, required: [true, "Contract ID is required!"] },
+            name: { type: String, required: [true, "Contract name is required!"] },
+            description: { type: String, required: [true, "Contract description is required!"] },
+            price: { type: Number, required: [true, "Contract price is required!"] },
+            status: { type: String, enum: ["active", "closed"], default: "active" }
+        }
+    ]
 }, { timestamps: true });
 
 const Client = mongoose.model("clients", clientSchema);

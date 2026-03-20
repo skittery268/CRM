@@ -3,6 +3,8 @@ const express = require("express");
 
 // Controller functions
 const { getAllClients, getClient, addClient, deleteClient, editClientInfo, getManagerClients } = require("../controllers/clients.controller");
+
+// Middlewares
 const protect = require("../middlewares/protect.middleware");
 
 const clientsRouter = express.Router();
