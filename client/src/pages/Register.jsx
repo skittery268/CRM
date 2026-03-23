@@ -25,6 +25,7 @@ const Register = () => {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Your name"
+                        required
                         className="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-blue-600 focus:bg-white"
                     />
                 </div>
@@ -38,6 +39,7 @@ const Register = () => {
                         value={formData.email}
                         placeholder="name@example.com"
                         onChange={handleChange}
+                        required
                         className="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-blue-600 focus:bg-white"
                     />
                 </div>
@@ -51,6 +53,7 @@ const Register = () => {
                         value={formData.password}
                         placeholder="Enter password"
                         onChange={handleChange}
+                        required
                         className="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-blue-600 focus:bg-white"
                     />
                 </div>

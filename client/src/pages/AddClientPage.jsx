@@ -21,17 +21,17 @@ const AddClientPage = () => {
             <form onSubmit={(e) => { handleSubmit(e, addClient); resetForm(); }} className="mt-6 grid gap-4 md:grid-cols-2">
                 <div className="md:col-span-2">
                     <label htmlFor="fullname" className="mb-1 block text-sm font-semibold text-slate-700">Full Name</label>
-                    <input id="fullname" type="text" name="fullname" value={formData.fullname} onChange={handleChange} placeholder="Enter client fullname" className="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2.5 text-sm outline-none transition focus:border-blue-600 focus:bg-white" />
+                    <input id="fullname" type="text" name="fullname" required value={formData.fullname} onChange={handleChange} placeholder="Enter client fullname" className="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2.5 text-sm outline-none transition focus:border-blue-600 focus:bg-white" />
                 </div>
 
                 <div className="md:col-span-2">
                     <label htmlFor="description" className="mb-1 block text-sm font-semibold text-slate-700">Description</label>
-                    <input id="description" type="text" name="description" value={formData.description} onChange={handleChange} placeholder="Enter client description" className="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2.5 text-sm outline-none transition focus:border-blue-600 focus:bg-white" />
+                    <input id="description" type="text" required name="description" value={formData.description} onChange={handleChange} placeholder="Enter client description" className="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2.5 text-sm outline-none transition focus:border-blue-600 focus:bg-white" />
                 </div>
 
                 <div>
                     <label htmlFor="facebook" className="mb-1 block text-sm font-semibold text-slate-700">Facebook</label>
-                    <input id="facebook" type="text" name="facebook" value={formData.facebook} onChange={handleChange} placeholder="Facebook profile URL" className="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2.5 text-sm outline-none transition focus:border-blue-600 focus:bg-white" />
+                    <input id="facebook" type="text" required name="facebook" value={formData.facebook} onChange={handleChange} placeholder="Facebook profile URL" className="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2.5 text-sm outline-none transition focus:border-blue-600 focus:bg-white" />
                 </div>
 
                 <div>
