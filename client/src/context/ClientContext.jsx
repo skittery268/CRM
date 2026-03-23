@@ -35,7 +35,7 @@ export const ClientProvider = ({ children }) => {
 
         getAllClients();
         getManagerClients();
-    }, []);
+    }, [user]);
 
     const getClient = async id => {
         try {

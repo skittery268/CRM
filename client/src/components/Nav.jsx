@@ -14,7 +14,7 @@ const Nav = () => {
     return (
         <header className="rounded-2xl border border-slate-200/80 bg-white/80 px-4 py-3 shadow-md shadow-slate-300/30 backdrop-blur-sm sm:px-6">
             <nav className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <Link to={user ? "/profile" : "/login"} className="font-display text-xl font-bold text-slate-900">
+                <Link to={"/"} className="font-display text-xl font-bold text-slate-900">
                     CRM Hub
                 </Link>
 

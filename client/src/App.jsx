@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Nav from "./components/Nav";
 import AddClientPage from "./pages/AddClientPage";
 import Client from "./components/Client";
+import Home from "./pages/Home";
 
 const App = () => {
     return (
@@ -14,6 +15,7 @@ const App = () => {
 
             <section className="mt-6 flex-1 rounded-2xl border border-slate-200/80 bg-white/75 p-4 shadow-lg shadow-slate-300/30 backdrop-blur-sm sm:p-6 lg:p-8">
                 <Routes>
+                    <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
